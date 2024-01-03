@@ -13,13 +13,14 @@ export const ADD_USER="ADD_USER";
 export const GET_LIST="GET_LIST";
 export const ADD_LIST="ADD_LIST";
 
-export const GET_BUYLIST="GET_BUYLIST";
 
 export const ADD_TO_CART="ADD_TO_CART";
 
 export const EDIT_COUNT="EDIT_COUNT";
 export const DELETE_PRODUCT="DELETE_PRODUCT";
 export const ADD_PRODUCT="ADD_PRODUCT";
+export const GET_SHOPPINGLIST="GET_SHOPPINGLIST";
+
 
 
 

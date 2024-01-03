@@ -15,7 +15,7 @@ import AddRecipe from './addRecipe';
 import DeleteRecipe from './deleteRecipe';
 import DetailsRecipe from './detailsRecipe ';
 import ShoppingList from './shoppingList';
-
+import Addtoshoppinglist from './addtoshoppinglist'
 
 function App() {
   const user = useSelector(state => state?.user)
@@ -34,8 +34,9 @@ function App() {
 
   return (
     <div className="App">
+
       <h1>Hi my project</h1>
-     
+     <Header/>
       
       <Routes>
       <Route path="/login" element={<LogIn/>}/>
@@ -48,6 +49,7 @@ function App() {
       <Route path="/deleteRecipe" element={<DeleteRecipe/>}/>
       <Route path="/detailsRecipe" element={< DetailsRecipe/>}/>
       <Route path="/shoppingList" element={< ShoppingList/>}/>
+      <Route path="/addtoshoppinglist" element={< Addtoshoppinglist/>}/>
     
 
       

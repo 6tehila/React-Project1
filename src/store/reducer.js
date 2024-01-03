@@ -4,7 +4,7 @@ const initlaseState = {
     resipes: [],
     categories: [],
     user: {},
-    buylist: []
+    shoppingList: []
 }
 const Rudecer = (state = initlaseState, action) => {
     switch (action.type) {
@@ -39,14 +39,14 @@ const Rudecer = (state = initlaseState, action) => {
                 categories
             }
         }
-        case actionName.GET_BUYLIST: {
-            const buylist = action.data;
-            state.buylist = buylist;
-            return {
-                ...state,
-                buylist
-            }
-        }
+        // case actionName.GET_BUYLIST: {
+        //     const buylist = action.data;
+        //     state.buylist = buylist;
+        //     return {
+        //         ...state,
+        //         buylist
+        //     }
+        // }
         case actionName.ADD_TO_CART: {
             const buylist = action.buylist;
             const newState = {
@@ -74,23 +74,35 @@ const Rudecer = (state = initlaseState, action) => {
             }
         }
 
+
         case actionName.ADD_PRODUCT: {
-            const product = action.data;
-            state.shoppingList.push(product);
-            return {
-                ...state, product
-            }
-        }
-        
-        case actionName.DELETE_PRODUCT: {
-            const id = action.data;
-            const filtered = state.buylist.filter(product => product.Id !== id);
-            state.buylist = filtered;
+            const product = [...state.shoppingList]
+            product.push(action.data)
             return {
                 ...state,
-                filtered
+                product
             }
         }
+        // case actionName.DELETE_PRODUCT: {
+        //     const id = action.data;
+        //     const filtered = state.buylist.filter(product => product.Id !== id);
+        //     state.buylist = filtered;
+        //     return {
+        //         ...state,
+        //         filtered
+        //     }
+        // }
+        case 'DELETE_PRODUCT': {
+            const productIdToDelete = action.data;
+            const updatedShoppingList = state.buylist.filter(
+                product => product.Id !== productIdToDelete
+            );
+            return {
+                ...state,
+                buylist: updatedShoppingList,
+            };
+        }
+        
         
         case actionName.EDIT_COUNT: {
             const edit_count = action.data;
@@ -98,8 +110,12 @@ const Rudecer = (state = initlaseState, action) => {
             state.buylist[index] = edit_count;
             return { ...state, edit_count }
         }
-        
 
+        case 'GET_SHOPPINGLIST': {
+            const buylist = action.data;
+            return { ...state, buylist: buylist };
+          }
+        
     }
 }
 export default Rudecer;
