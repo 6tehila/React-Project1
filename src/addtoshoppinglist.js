@@ -76,7 +76,9 @@ const Addtoshoppinglist = () => {
     axios
       .post(`http://localhost:8080/api/bay`, data)
       .then((x) => {
+        alert('👍');
         dispatch({ type: ADD_PRODUCT, data: x.data });
+       
       })
       .catch((err) => console.error(err))
       .finally();

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import DeleteRecipe from "./deleteRecipe";
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const DetailsRecipe = ({ ingredient }) => {
     const { state } = useLocation();
@@ -11,7 +11,7 @@ const DetailsRecipe = ({ ingredient }) => {
     const userId = useSelector((state) => state?.user?.Id);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
+const [buttonAnimation, setButtonAnimation] = useState(false);
     useEffect(() => {
         if (userId) {
             const addProductToServer = async () => {
@@ -46,6 +46,11 @@ const DetailsRecipe = ({ ingredient }) => {
     const editCart = () => {
         navigate("/editCart");
     };
+  // פונקציה שמפיקה את העמוד להדפסה
+  const printRecipe = () => {
+    window.print();
+  };
+
     return (
         <div>
             <h3>Details-Recipe</h3>
@@ -59,7 +64,29 @@ const DetailsRecipe = ({ ingredient }) => {
                     {state.Ingrident.map((i) => (
                         <div key={i.Id}>
                             <h4>{i.Name}: {i.Count} {i.Type}</h4>
-                            <button onClick={() => addToCart(i)}>הוספה לסל קניות</button>
+                            {/* <button onClick={() => addToCart(i)}>הוספה לסל קניות</button> */}
+                            <button
+    style={{
+        backgroundColor:  '#008CBA',
+        border: 'none',
+        color: 'white',
+        padding: '10px 20px',
+        textAlign: 'center',
+        textDecoration: 'none',
+        display: 'inline-block',
+        fontSize: '16px',
+        margin: '4px 2px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s ease',
+        transform: buttonAnimation ? 'scale(0.95)' : 'scale(1)',
+        borderRadius: '5px', // כדי להוסיף פינות מעוגלות
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)', // כדי להוסיף צל
+    }}
+    onClick={() => addToCart(i)}
+>
+    הוספה לסל קניות
+</button>
+
                         </div>
                     ))}
                 </div>
@@ -69,14 +96,92 @@ const DetailsRecipe = ({ ingredient }) => {
                     ))}
                 </div>
             </div>
-            {/* <button onClick={() => onDelete(state.Id)} disabled={myId!==state.UserId}>Delete</button>
-
-         <button onClick={() => nav_edit(state)}disabled={myId!==state.UserId} >Edit</button> */}
-            <button onClick={editCart} type="button" >עריכת סל קניות</button>
-            {<button onClick={() => navigate(`/deleteRecipe `, { state: Id })} type="button" > מחיקת מתכון</button>}
-            {/* {<button onClick={() => navigate(`/editRecipe `,{ state: Id})} type="button" disabled={Id!==state.UserId}>עריכת  מתכון</button>} */}
-            {<button onClick={() => navigate(`/addRecipe `, { state: state })} type="button" disabled={userId != state.UserId}>עריכת  מתכון</button>}
-
+          
+            {/* <button onClick={editCart} type="button" >עריכת סל קניות</button> */}
+            {/* {<button onClick={() => navigate(`/deleteRecipe `, { state: Id })} type="button" > מחיקת מתכון</button>} */}
+            {/* {<button onClick={() => navigate(`/addRecipe `, { state: state })} type="button" disabled={userId != state.UserId}>עריכת  מתכון</button>} */}
+            {/* <button type="button" onClick={printRecipe}>הדפסת מתכון </button> */}
+            <button
+                style={{
+                    backgroundColor: '#008CBA',
+                    border: 'none',
+                    color: 'white',
+                    padding: '15px 32px',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    fontSize: '16px',
+                    margin: '4px 2px',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.3s ease',
+                    transform: buttonAnimation ? 'scale(0.95)' : 'scale(1)',
+                }}
+                onClick={editCart}
+                type="button"
+            >
+                עריכת סל קניות
+            </button>
+            <button
+                style={{
+                    backgroundColor: '#f44336',
+                    border: 'none',
+                    color: 'white',
+                    padding: '15px 32px',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    fontSize: '16px',
+                    margin: '4px 2px',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.3s ease',
+                    transform: buttonAnimation ? 'scale(0.95)' : 'scale(1)',
+                }}
+                onClick={() => navigate(`/deleteRecipe `, { state: Id })}
+                type="button"
+            >
+                מחיקת מתכון
+            </button>
+            <button
+                style={{
+                    backgroundColor: '#555555',
+                    border: 'none',
+                    color: 'white',
+                    padding: '15px 32px',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    fontSize: '16px',
+                    margin: '4px 2px',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.3s ease',
+                    transform: buttonAnimation ? 'scale(0.95)' : 'scale(1)',
+                }}
+                onClick={() => navigate(`/addRecipe `, { state: state })}
+                type="button"
+                disabled={userId != state.UserId}
+            >
+                עריכת מתכון
+            </button>
+            <button
+                style={{
+                    backgroundColor: '#008CBA',
+                    border: 'none',
+                    color: 'white',
+                    padding: '15px 32px',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    fontSize: '16px',
+                    margin: '4px 2px',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.3s ease',
+                    transform: buttonAnimation ? 'scale(0.95)' : 'scale(1)',
+                }}
+                onClick={printRecipe}
+                type="button"
+            >
+                הדפסת מתכון
+            </button>
         </div>
     );
 };

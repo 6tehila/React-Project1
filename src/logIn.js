@@ -52,17 +52,6 @@ const LogIn = () => {
             )
     }
 
-    // return (
-    //     <>
-    //         <form onSubmit={handleSubmit(onSubmit)}>
-    //             <input type="text"  {...register('Username')} placeholder='name' />
-    //             <input type="password"  {...register('Password')} placeholder='password' />
-    //             <button type="submit">Submit</button>
-
-                
-    //         </form>
-    //     </>
-    // );
     return (
         <Grid container justifyContent="center" alignItems="center" style={{ height: '100vh' }}>
           <Grid item>

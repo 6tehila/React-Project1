@@ -6,7 +6,7 @@ import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 const schema = yup.object({
-  //התופס לא נשלח
+  //הטופס לא נשלח
   Username: yup.string().required("enter username"),
   Password: yup.string().required("enter password"),
   Name: yup.string().required("eneter name"),
