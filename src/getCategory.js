@@ -29,18 +29,7 @@ function GetCategory() {
         console.log(selected)
         displayFiltered()
     }
-    // const displayFiltered = () => {
-    //     // return (recipies.map((recipe) => {
-    //     //     {
-    //     //         recipe.CategoryId == selectedCategory && <div>
-    //     //             {recipe.Name}
-    //     //         </div>
-    //     //     }
-    //     // }))
-    //     return recipe.CategoryId === selectedCategory && (
-    //         <div key={recipe.Id}>{recipe.Name}</div>
-    //       );
-    // }
+
     const displayFiltered = () => {
         return (
           <div>

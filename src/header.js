@@ -7,24 +7,6 @@ import { Button } from '@mui/material';
 
 const Header = () => {
     const user = useSelector(state => state?.user)
-    // return <Fragment>
-
-    //     {!user ? <Fragment>
-    //         <Link to="/login">כניסה</Link>
-    //         <Link to="/signUp" state={{}}>הרשמה</Link> </Fragment>
-    //         :
-    //         <Fragment>
-
-    //             <Link to="/getAllRecipies"> כל המתכונים</Link>
-    //             <Link to="/addRecipe"> הוסף מתכון</Link>
-    //             <Link to="/getCategory">  קטגוריות</Link>
-                
-    //             <Link to="/addCategory">  הוספת קטגוריה </Link>
-    //             <Link to="/shoppingList">   הצגת רשימת קניות </Link>
-
-
-    //         </Fragment>
-    //     }
     return (
         <Fragment>
             {!user ? (
@@ -57,6 +39,5 @@ const Header = () => {
             )}
         </Fragment>
     );
-    // </Fragment>
 }
 export default Header;

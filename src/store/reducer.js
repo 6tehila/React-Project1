@@ -39,14 +39,7 @@ const Rudecer = (state = initlaseState, action) => {
                 categories
             }
         }
-        // case actionName.GET_BUYLIST: {
-        //     const buylist = action.data;
-        //     state.buylist = buylist;
-        //     return {
-        //         ...state,
-        //         buylist
-        //     }
-        // }
+    
         case actionName.ADD_TO_CART: {
             const buylist = action.buylist;
             const newState = {
@@ -83,15 +76,7 @@ const Rudecer = (state = initlaseState, action) => {
                 product
             }
         }
-        // case actionName.DELETE_PRODUCT: {
-        //     const id = action.data;
-        //     const filtered = state.buylist.filter(product => product.Id !== id);
-        //     state.buylist = filtered;
-        //     return {
-        //         ...state,
-        //         filtered
-        //     }
-        // }
+
         case 'DELETE_PRODUCT': {
             const productIdToDelete = action.data;
             const updatedShoppingList = state.buylist.filter(

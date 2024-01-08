@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 // import reducer from './UserStore/Reducer'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup"
-import Home from "./home";
 import { useDispatch } from 'react-redux'
 import { Grid, Paper, Typography, TextField, Box, Button } from '@mui/material';
 

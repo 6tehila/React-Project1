@@ -96,11 +96,6 @@ const [buttonAnimation, setButtonAnimation] = useState(false);
                     ))}
                 </div>
             </div>
-          
-            {/* <button onClick={editCart} type="button" >עריכת סל קניות</button> */}
-            {/* {<button onClick={() => navigate(`/deleteRecipe `, { state: Id })} type="button" > מחיקת מתכון</button>} */}
-            {/* {<button onClick={() => navigate(`/addRecipe `, { state: state })} type="button" disabled={userId != state.UserId}>עריכת  מתכון</button>} */}
-            {/* <button type="button" onClick={printRecipe}>הדפסת מתכון </button> */}
             <button
                 style={{
                     backgroundColor: '#008CBA',

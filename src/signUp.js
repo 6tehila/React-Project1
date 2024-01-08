@@ -5,6 +5,8 @@ import * as actionsName from './store/action'
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { TextField, Button, Typography, Container, Box } from '@mui/material';
 const schema = yup.object({
   //הטופס לא נשלח
   Username: yup.string().required("enter username"),
@@ -50,29 +52,83 @@ const SignUp = () => {
     resolver: yupResolver(schema), // יוצרת טופס ומחברת לו את סכימת הוולידציה.
   })
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <Container component="main" maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Typography component="h1" variant="h5">
+          טופס הרשמה
+        </Typography>
+        <Box
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+          sx={{
+            width: '100%', // עשוי להתאים לרוחב של הקומפוננטה
+            mt: 3,
+          }}
+        >
+          <TextField
+            margin="normal"
+            fullWidth
+            label="שם משתמש"
+            {...register("Username")}
+          />
+          <p>{errors.Username?.message}</p>
 
-        <input placeholder="Username" {...register("Username")} />
-        <p>{errors.username?.message}</p>
+          <TextField
+            margin="normal"
+            fullWidth
+            label="סיסמה"
+            type="password"
+            {...register("Password")}
+          />
+          <p>{errors.Password?.message}</p>
 
-        <input placeholder="password" {...register("Password")} />
-        <p>{errors.password?.message}</p>
+          <TextField
+            margin="normal"
+            fullWidth
+            label="שם"
+            {...register("Name")}
+          />
+          <p>{errors.Name?.message}</p>
 
-        <input placeholder="name" {...register("Name")} />
-        <p>{errors.name?.message}</p>
+          <TextField
+            margin="normal"
+            fullWidth
+            label="טלפון"
+            {...register("Phone")}
+          />
+          <p>{errors.Phone?.message}</p>
 
-        <input placeholder="phone" {...register("Phone")} />
-        <p>{errors.phone?.message}</p>
+          <TextField
+            margin="normal"
+            fullWidth
+            label="אימייל"
+            type="email"
+            {...register("Email")}
+          />
+          <p>{errors.Email?.message}</p>
 
-        <input placeholder="email" {...register("Email")} />
-        <p>{errors.email?.message}</p>
+          <TextField
+            margin="normal"
+            fullWidth
+            label="תעודת זהות"
+            {...register("Tz")}
+          />
+          <p>{errors.Tz?.message}</p>
 
-        <input placeholder="tz" {...register("Tz")} />
-        <p>{errors.tz?.message}</p>
+          <Button type="submit" variant="contained" color="primary" fullWidth>
+            שליחה
+          </Button>
+        </Box>
+      </Box>
+    </Container>
+  );
+};
 
-        <input type="submit" />
-      </form>
-    </>)
-}
 export default SignUp;
